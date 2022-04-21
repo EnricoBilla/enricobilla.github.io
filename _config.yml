@@ -9,3 +9,6 @@ author:
   linkedin: "enrico-brambilla-8627b4211"
   email: "enric.brambilla+ws@gmail.com"
   telegram: "enricobilla"
+
+plugins:
+  - jekyll-postcss
