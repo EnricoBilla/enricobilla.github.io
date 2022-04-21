@@ -64,6 +64,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.2)
   jekyll-postcss
+  sassc
   webrick (~> 1.7)
 
 BUNDLED WITH
