@@ -10,7 +10,7 @@
 
   <title>{{ page.title }} - {{ site.title }}</title>
 
-  <meta property="og:title" content="Homepage | Atom Template" />
+  <meta property="og:title" content="{{ page.title }} - {{ site.title }}" />
 
   <meta property="og:locale" content="en_US" />
 
@@ -25,7 +25,7 @@
 
   <meta name="theme-color" content="#5540af" />
 
-  <meta property="og:site_name" content="Atom Template" />
+  <meta property="og:site_name" content="{{ site.title }}" />
 
   <meta property="og:image" content="//assets/img/social.jpg" />
 
@@ -43,7 +43,7 @@
     href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
   <link crossorigin="anonymous" href="{{ "/assets/css/main.css" | relative_url }}" media="screen" rel="stylesheet" />
 
@@ -236,29 +236,30 @@
               </div>
               <div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
                 <h1 class="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl">
-                  Hello I'm Christy Smith!
+                  Hi! I'm {{ site.author.fullname }}!
                 </h1>
                 <div class="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start">
                   <div class="flex items-center justify-center pl-0 sm:justify-start md:pl-1">
-                    <p class="font-body text-lg uppercase text-white">Let's connect</p>
+                    <p class="font-body text-lg uppercase text-white">Drop a message</p>
                     <div class="hidden sm:block">
                       <i class="bx bx-chevron-right text-3xl text-yellow"></i>
                     </div>
                   </div>
+                  <!-- Contacts -->
                   <div class="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
-                    <a href="/">
-                      <i class="bx bxl-facebook-square text-2xl text-white hover:text-yellow"></i>
+                    <a href="https://www.github.com/{{ site.author.github }}">
+                      <i class="bx bxl-github text-2xl text-white hover:text-yellow"></i>
                     </a>
-                    <a href="/" class="pl-4">
-                      <i class="bx bxl-twitter text-2xl text-white hover:text-yellow"></i>
-                    </a>
-                    <a href="/" class="pl-4">
-                      <i class="bx bxl-dribbble text-2xl text-white hover:text-yellow"></i>
-                    </a>
-                    <a href="/" class="pl-4">
+                    <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="pl-4">
                       <i class="bx bxl-linkedin text-2xl text-white hover:text-yellow"></i>
                     </a>
-                    <a href="/" class="pl-4">
+                    <a href="https://t.me/{{ site.author.telegram }}" class="pl-4">
+                      <i class="bx bxl-telegram text-2xl text-white hover:text-yellow"></i>
+                    </a>
+                    <a href="mailto:{{ site.author.email }}" class="pl-4">
+                      <i class="bx bxl-gmail text-2xl text-white hover:text-yellow"></i>
+                    </a>
+                    <a href="https://www.instagram.com/{{ site.author.instagram }}" class="pl-4">
                       <i class="bx bxl-instagram text-2xl text-white hover:text-yellow"></i>
                     </a>
                   </div>
@@ -270,21 +271,15 @@
 
         <div class="bg-grey-50" id="about">
           <div class="container flex flex-col items-center py-16 md:py-20 lg:flex-row">
-            <div class="w-full text-center sm:w-3/4 lg:w-3/5 lg:text-left">
+            <div class="w-full text-center sm:w-3/4 lg:w-4/5 lg:text-left">
               <h2 class="font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
                 Who am I?
               </h2>
               <h4 class="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
-                I'm Christy Smith, a Web Designer & Photographer
+                I'm {{ site.author.fullname }}, {{ page.short-bio }}
               </h4>
               <p class="pt-6 font-body leading-relaxed text-grey-20">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                {{ page.full-bio }}
               </p>
               <div class="flex flex-col justify-center pt-6 sm:flex-row lg:justify-start">
                 <div class="flex items-center justify-center sm:justify-start">
@@ -314,7 +309,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-full pl-0 pt-10 sm:w-3/4 lg:w-2/5 lg:pl-12 lg:pt-0">
+            <!-- <div class="w-full pl-0 pt-10 sm:w-3/4 lg:w-2/5 lg:pl-12 lg:pt-0">
               <div>
                 <div class="flex items-end justify-between">
                   <h4 class="font-body font-semibold uppercase text-black">
@@ -355,7 +350,7 @@
                   <div class="h-3 rounded-full bg-primary" style="width: 91%"></div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -871,8 +866,11 @@
 
       <div class="bg-primary">
         <div class="container flex flex-col justify-between py-6 sm:flex-row">
-          <p class="text-center font-body text-white md:text-left">
-            © Copyright 2022. All right reserved, ATOM.
+          <p class="text-left font-body text-white md:text-left">
+            Made with ❤️ by <a class="no-underline hover:underline" target="_blank" href="{{ site.author.url }}" rel="noopener">{{ site.author.fullname }}</a>.
+            Coded with <a class="no-underline hover:underline" target="_blank" href="https://jekyllrb.com/" rel="noopener">Jekyll</a> and 
+            <a class="no-underline hover:underline" target="_blank" href="https://tailwindcss.com/" rel="noopener">TailwindCSS</a>,
+            inspired by <a class="no-underline hover:underline" target="_blank" href="https://redpixelthemes.com/templates/atom/" rel="noopener">Atom Template</a>.
           </p>
           <div class="flex items-center justify-center pt-5 sm:justify-start sm:pt-0">
             <a href="/">
@@ -895,8 +893,6 @@
       </div>
 
     </div>
-
-    {{ content }}
 
 </body>
 
