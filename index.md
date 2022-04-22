@@ -1,6 +1,5 @@
 ---
 layout: aboutme
-title: "About Me"
 
 short-bio: a Student & Geek
 full-bio: Here goes my full bio, absolutely to do. Lorem ipsum dolor sit amet,

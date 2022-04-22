@@ -8,12 +8,12 @@
 
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 
-  <title>{{ page.title }} - {{ site.title }}</title>
-
-  {% if page.title != "" %}
-    <meta property="og:title" content="{{ page.title - site.title }}" />
+    {% if (page.title and page.title != "") %}
+    <meta property="og:title" content="{{ page.title }} - {{ site.title }}" />
+    <title>{{ page.title }} - {{ site.title }}</title>
   {% else %}
     <meta property="og:title" content="{{ site.title }}" />
+    <title>{{ site.title }}</title>
   {% endif %}
 
   <meta property="og:locale" content="{{ site.lang | default: "en-US" }}" />
@@ -47,7 +47,7 @@
 
   <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
-  <link rel="stylesheet" type="text/css" href="assets/css/tailwind.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 
   <script defer src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script>
 
@@ -68,7 +68,7 @@
     }
 }">
       <div class="w-full top-0 py-3 sm:py-5 absolute" style="z-index: 100">
-        <div class="px-8 lg:px-28 2xl:px-96 lg:py-3 flex items-center justify-between">
+        <div class="px-8 lg:px-28 2xl:px-64 xxxl:px-96 lg:py-3 flex items-center justify-between">
           <div></div>
           <div class="hidden lg:block">
             <ul class="flex items-center">
