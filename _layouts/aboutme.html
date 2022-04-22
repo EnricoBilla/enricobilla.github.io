@@ -46,7 +46,7 @@
 
   <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/tailwind.css">
 
   <script defer src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script>
 
@@ -162,7 +162,7 @@
           <div class="container relative z-30 pt-14 pb-10  lg:pt-44 lg:pb-40">
             <div class="flex flex-col items-center justify-center lg:flex-row">
               <div class="rounded-full border-8 border-primary shadow-xl">
-                <img src="/assets/img/blog-author.jpg" class="h-48 rounded-full sm:h-56" alt="author" />
+                <img src="/assets/img/author.png" class="h-48 rounded-full sm:h-56" alt="author" />
               </div>
               <div class="pt-8 sm:pt-10 lg:pl-8 lg:pt-0">
                 <h1 class="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl">
@@ -244,6 +244,7 @@
         </div>
 
         <div class="container py-16 md:py-20" id="career">
+
           <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
             My work experience
           </h2>
@@ -251,109 +252,117 @@
             Here's a brief of my career
           </h3>
 
-          <div class="relative mx-auto mt-12 flex w-full flex-col lg:w-2/3">
-            <span class="left-2/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>
+          <!-- Desktop -->
 
-            <div class="mt-8 flex flex-col text-center md:flex-row md:text-left">
-              <div class="md:w-2/5">
-                <div class="flex justify-center md:justify-start">
-                  <span class="shrink-0">
-                    <img src="/assets/img/logo-spotify.svg" class="h-auto w-32" alt="company logo" />
-                  </span>
-                  <div class="relative ml-3 hidden w-full md:block">
-                    <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 transform bg-grey-70"></span>
+          <div class="hidden md:block">
+
+            <div class="relative mx-auto mt-12 flex w-full flex-col lg:w-2/3">
+              <span class="left-2/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>
+  
+              {% for event in page.events %}
+  
+              <div class="flex flex-col text-center md:flex-row md:text-left">
+                <div class="md:w-2/5"
+                
+                {% if event.image.margin_fix %}
+                  style="margin-top: {{ event.image.margin_fix }}rem"
+                {% endif %}
+                
+                >
+                  <div class="flex justify-center md:justify-start">
+                    {% if event.image %}
+                    <span class="shrink-0">
+                      <img src="{{ event.image.path }}" class="h-auto" alt="{{ event.image.alt }}" 
+                      
+                      {% if event.image.width %}
+                        style="width: {{ event.image.width }}rem"
+                      {% else %}
+                        style="width: 10rem"
+                      {% endif %}
+                      
+                      />
+                    </span>
+                    <div class="relative ml-3 hidden w-full md:block">
+                      <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 transform bg-grey-70"></span>
+                    </div>
+                    {% endif %}
                   </div>
                 </div>
-              </div>
-              <div class="md:w-3/5">
-                <div class="relative flex md:pl-18">
-                  <span
-                    class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
-
-                  <div class="mt-1 flex">
-                    <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
-                    <div class="md:-mt-1 md:pl-8">
-                      <span class="block font-body font-bold text-grey-40">Apr 2015 - Mar 2018</span>
-                      <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">Frontend
-                        Developer</span>
-                      <div class="pt-2">
-                        <span class="block font-body text-black">Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                          Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac
-                          venenatis enim.</span>
+                <div class="mt-8 md:w-3/5">
+                  <div class="relative flex md:pl-18">
+                    <span class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
+                    <div class="mt-1 flex">
+                      <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
+                      <div class="md:-mt-1 md:pl-8">
+                        <span class="block font-body font-bold text-grey-40">{{ event.interval }}</span>
+                        <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">{{ event.title}}</span>
+                        <div class="pt-2">
+                          <span class="block font-body text-black">{{ event.description | newline_to_br }}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="mt-8 flex flex-col text-center md:flex-row md:text-left">
-              <div class="md:w-2/5">
-                <div class="flex justify-center md:justify-start">
-                  <span class="shrink-0">
-                    <img src="/assets/img/logo-microsoft.svg" class="h-auto w-32" alt="company logo" />
-                  </span>
-                  <div class="relative ml-3 hidden w-full md:block">
-                    <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 transform bg-grey-70"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-3/5">
-                <div class="relative flex md:pl-18">
-                  <span
-                    class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
-
-                  <div class="mt-1 flex">
-                    <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
-                    <div class="md:-mt-1 md:pl-8">
-                      <span class="block font-body font-bold text-grey-40">Mar 2018 - September 2019</span>
-                      <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">Software
-                        Engineer</span>
-                      <div class="pt-2">
-                        <span class="block font-body text-black">Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                          Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac
-                          venenatis enim.</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-8 flex flex-col text-center md:flex-row md:text-left">
-              <div class="md:w-2/5">
-                <div class="flex justify-center md:justify-start">
-                  <span class="shrink-0">
-                    <img src="/assets/img/logo-fedex.svg" class="h-auto w-32" alt="company logo" />
-                  </span>
-                  <div class="relative ml-3 hidden w-full md:block">
-                    <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 transform bg-grey-70"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="md:w-3/5">
-                <div class="relative flex md:pl-18">
-                  <span
-                    class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
-
-                  <div class="mt-1 flex">
-                    <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
-                    <div class="md:-mt-1 md:pl-8">
-                      <span class="block font-body font-bold text-grey-40">October 2019 - Feb 2021</span>
-                      <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">DevOps
-                        Engineer</span>
-                      <div class="pt-2">
-                        <span class="block font-body text-black">Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit.
-                          Vestibulum mattis felis vitae risus pulvinar tincidunt. Nam ac
-                          venenatis enim.</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  
+              {% endfor %}
+  
             </div>
           </div>
+
+          <!-- Mobile -->
+
+          <div class="sm:block md:hidden">
+
+            <div class="relative mx-auto flex w-full flex-col lg:w-2/3">
+              <span class="left-2/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"></span>
+  
+              {% for event in page.events %}
+  
+              <div class="flex flex-col text-center md:flex-row md:text-left">
+                <div class="mt-8 md:w-2/5">
+                  <div class="flex justify-center md:justify-start">
+                    {% if event.image %}
+                    <span class="shrink-0">
+                      <img src="{{ event.image.path }}" class="h-auto" alt="{{ event.image.alt }}" 
+                      
+                      {% if event.image.width %}
+                        style="width: {{ event.image.width }}rem"
+                      {% else %}
+                        style="width: 10rem"
+                      {% endif %}
+                      
+                      />
+                    </span>
+                    <div class="relative ml-3 mb-4 hidden w-full md:block">
+                      <span class="absolute inset-x-0 top-1/2 h-0.5 -translate-y-1/2 transform bg-grey-70"></span>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="md:w-3/5">
+                  <div class="relative flex md:pl-18">
+                    <span class="absolute left-8 top-1 hidden h-4 w-4 rounded-full border-2 border-grey-40 bg-white md:block"></span>
+                    <div class="mt-1 flex">
+                      <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
+                      <div class="md:-mt-1 md:pl-8">
+                        <span class="block font-body font-bold text-grey-40">{{ event.interval }}</span>
+                        <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">{{ event.title}}AAA Mobile</span>
+                        <div class="pt-2">
+                          <span class="block font-body text-black">{{ event.description | newline_to_br }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              {% endfor %}
+  
+            </div>
+          </div>
+
+
         </div>
 
         <div class="bg-grey-50" id="blog">
