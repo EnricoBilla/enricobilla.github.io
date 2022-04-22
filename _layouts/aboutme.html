@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: " en-US" }}">
+<html lang="{{ site.lang | default: "en-US" }}">
 
 <head>
   <meta charset="utf-8" />
@@ -10,29 +10,26 @@
 
   <title>{{ page.title }} - {{ site.title }}</title>
 
-  <meta property="og:title" content="{{ page.title }} - {{ site.title }}" />
+  <meta property="og:title" content="{{ site.title }}" />
 
-  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale" content="{{ site.lang | default: "en-US" }}" />
 
-  <link rel="canonical" href="//" />
+  <link rel="canonical" href="/" />
 
-  <meta property="og:url" content="//" />
+  <meta property="og:url" content="{{ site.url }}" />
 
   <meta name="description"
     content="{{ page.full-bio }}" />
 
   <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
 
-  <meta name="theme-color" content="#5540af" />
-  <!-- #40af78 -->
+  <meta name="theme-color" content="#50bdae" />
 
   <meta property="og:site_name" content="{{ site.title }}" />
 
-  <meta property="og:image" content="//assets/img/social.jpg" />
+  <meta property="og:image" content="/assets/img/author.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-
-  <meta name="twitter:site" content="@tailwindmade" />
 
   <link crossorigin="crossorigin" href="https://fonts.gstatic.com" rel="preconnect" />
 
@@ -51,7 +48,6 @@
   <script defer src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script>
 
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
 
 </head>
 

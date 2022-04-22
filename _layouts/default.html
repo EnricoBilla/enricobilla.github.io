@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+<head>
+  <meta charset="utf-8" />
+
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+  <title>{{ page.title }} - {{ site.title }}</title>
+
+  {% if page.title != "" %}
+    <meta property="og:title" content="{{ page.title - site.title }}" />
+  {% else %}
+    <meta property="og:title" content="{{ site.title }}" />
+  {% endif %}
+
+  <meta property="og:locale" content="{{ site.lang | default: "en-US" }}" />
+
+  <link rel="canonical" href="/" />
+
+  <meta property="og:url" content="{{ site.url }}" />
+
+  <meta name="description"
+    content="{{ page.full-bio }}" />
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+
+  <meta name="theme-color" content="#50bdae" />
+
+  <meta property="og:site_name" content="{{ site.title }}" />
+
+  <meta property="og:image" content="/assets/img/author.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link crossorigin="crossorigin" href="https://fonts.gstatic.com" rel="preconnect" />
+
+  <link as="style"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@400;500;600;700&display=swap"
+    rel="preload" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="assets/css/tailwind.css">
+
+  <script defer src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"></script>
+
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body :class="{ 'overflow-hidden max-h-screen': mobileMenu }" class="relative" x-data="{ mobileMenu: false }">
+
+  <div id="main" class="relative">
+    <div x-data="{
+    triggerNavItem(id) {
+        $scroll(id)
+    },
+    triggerMobileNavItem(id) {
+        mobileMenu = false;
+        this.triggerNavItem(id)
+    }
+}">
+      <div class="w-full top-0 py-3 sm:py-5 absolute" style="z-index: 100">
+        <div class="px-8 lg:px-28 2xl:px-96 lg:py-3 flex items-center justify-between">
+          <div></div>
+          <div class="hidden lg:block">
+            <ul class="flex items-center">
+
+              <li class="group pl-6">
+
+                <span @click="triggerNavItem('#about')"
+                  class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">About</span>
+
+                <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+              </li>
+
+              <li class="group pl-6">
+
+                <span @click="triggerNavItem('#projects')"
+                  class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Projects</span>
+
+                <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+              </li>
+
+              <li class="group pl-6">
+
+                <span @click="triggerNavItem('#career')"
+                  class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Career</span>
+
+                <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+              </li>
+
+              <li class="group pl-6">
+
+                <span @click="triggerNavItem('#blog')"
+                  class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span>
+
+                <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+              </li>
+
+            </ul>
+          </div>
+          <div class="block lg:hidden">
+            <button @click="mobileMenu = !mobileMenu">
+              <template x-if="mobileMenu">
+                <i class="bx bx-x text-4xl text-white"></i>
+              </template>
+              <template x-if="!mobileMenu">
+                <i class="bx bx-menu text-4xl text-white"></i>
+              </template>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pointer-events-none fixed inset-0 z-70 min-h-screen bg-black bg-opacity-70 opacity-0 transition-opacity lg:hidden"
+        :class="{ 'opacity-100 pointer-events-auto': mobileMenu }">
+        <div class="absolute right-0 min-h-screen w-80 bg-primary py-4 px-8 shadow">
+
+          <ul class="mt-16 flex flex-col">
+
+            <li class="py-2">
+              <span @click="triggerMobileNavItem('#about')"
+                class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">About</span>
+            </li>
+
+            <li class="py-2">
+              <span @click="triggerMobileNavItem('#projects')"
+                class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Projects</span>
+            </li>
+
+            <li class="py-2">
+              <span @click="triggerMobileNavItem('#career')"
+                class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Career</span>
+            </li>
+
+            <li class="py-2">
+              <span @click="triggerMobileNavItem('#blog')"
+                class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      {{ content }}
+
+      <div class="bg-primary">
+        <div class="container flex flex-col justify-between py-6 sm:flex-row">
+          <p class="text-left font-body text-white md:text-left">
+            Made with ❤️ by <a class="no-underline hover:underline" target="_blank" href="{{ site.author.url }}" rel="noopener">{{ site.author.fullname }}</a>.
+            Coded with <a class="no-underline hover:underline" target="_blank" href="https://jekyllrb.com/" rel="noopener">Jekyll</a> and 
+            <a class="no-underline hover:underline" target="_blank" href="https://tailwindcss.com/" rel="noopener">TailwindCSS</a>,
+            inspired by <a class="no-underline hover:underline" target="_blank" href="https://redpixelthemes.com/templates/atom/" rel="noopener">Atom Template</a>.
+          </p>
+
+          <!-- Contacts -->
+          <div class="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
+            <a href="https://www.github.com/{{ site.author.github }}">
+              <i class="bx bxl-github text-2xl text-white hover:text-yellow"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="pl-4">
+              <i class="bx bxl-linkedin text-2xl text-white hover:text-yellow"></i>
+            </a>
+            <a href="https://t.me/{{ site.author.telegram }}" class="pl-4">
+              <i class="bx bxl-telegram text-2xl text-white hover:text-yellow"></i>
+            </a>
+            <a href="mailto:{{ site.author.email }}" class="pl-4">
+              <i class="bx bxl-gmail text-2xl text-white hover:text-yellow"></i>
+            </a>
+            <a href="https://www.instagram.com/{{ site.author.instagram }}" class="pl-4">
+              <i class="bx bxl-instagram text-2xl text-white hover:text-yellow"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</body>
+
+</html>
