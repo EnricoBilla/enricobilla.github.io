@@ -1,0 +1,78 @@
+---
+layout: default
+head: >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+desktop_menu: >
+    <li class="group pl-6">
+        <a href="/"><span
+            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Home</span></a>
+        <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+    </li>
+    <li class="group pl-6">
+        <a href="#"><span
+            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span></a>
+        <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
+    </li>
+mobile_menu: >
+    <li class="py-2">
+        <a href="/"><span
+            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Home</span></a>
+    </li>
+    <li class="py-2">
+        <a href="#"><span
+            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span></a>
+    </li>
+---
+<div>
+    <div
+        class="inset-0 z-20 bg-gradient-to-r from-hero-gradient-from to-hero-gradient-to bg-cover bg-center bg-no-repeat h-20" style="height: 86px">
+    </div>
+
+    <div class="" id="blog">
+        <div class="container pt-16 md:pt-20 pb-3">
+            <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
+                {{ page.title }}
+            </h2>
+            <h4 class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
+                {{ page.subtitle }}
+            </h4>
+            <div class="mt-16 grid place-items-center">
+    
+                {% for post in site.posts limit: 3 %}
+    
+                <article class="relative flex flex-col mb-18 mx-2 max-w-5xl lg:ml-48 lg:mr-12 w-full">
+                    <h3 class="mb-4 text-xl text-slate-900 tracking-tight font-bold dark:text-slate-200"><a href="{{ post.url | replace: ".html", "" }}">{{ post.title }}</a></h3>
+                    <div class="mb-6 dark:prose-dark">
+                       {{ post.excerpt }}
+                    </div>
+                    <div class="mt-auto flex flex-row-reverse items-center justify-end">
+                       <dl>
+                          <dt class="sr-only">Date</dt>
+                          <dd class="text-sm leading-6 dark:text-slate-400 lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:whitespace-nowrap"><time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></dd>
+                       </dl>
+                       <svg width="2" height="2" fill="currentColor" class="mx-4 text-primarydark lg:hidden">
+                          <circle cx="1" cy="1" r="1"></circle>
+                       </svg>
+                       <a class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-primarylight text-primarydark hover:bg-primarylighter" href="{{ post.url | replace: ".html", "" }}">
+                          Read more
+                          <span class="sr-only">
+                             , <!-- -->{{ post.title }}
+                          </span>
+                          <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400 dark:text-slate-500 dark:group-hover:text-slate-400" width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                             <path d="M0 0L3 3L0 6"></path>
+                          </svg>
+                       </a>
+                    </div>
+                 </article>
+    
+                 {% endfor %}
+    
+            </div>
+        </div>
+    </div>
+
+</div>
