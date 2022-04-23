@@ -21,8 +21,8 @@ desktop_menu: >
         <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
     </li>
     <li class="group pl-6">
-        <span @click="triggerNavItem('#blog')"
-            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span>
+        <a href="/posts"><span
+            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span></a>
         <span class="block h-0.5 w-full bg-transparent group-hover:bg-yellow"></span>
     </li>
 mobile_menu: >
@@ -39,8 +39,8 @@ mobile_menu: >
             class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Career</span>
     </li>
     <li class="py-2">
-        <span @click="triggerMobileNavItem('#blog')"
-            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span>
+        <a href="/posts"><span
+            class="cursor-pointer pt-0.5 font-header font-semibold uppercase text-white">Blog</span></a>
     </li>
 ---
 <div>
@@ -246,8 +246,10 @@ mobile_menu: >
 
     </div>
 
+    {% if site.posts.size > 0 %}
+
     <div class="bg-grey-50" id="blog">
-        <div class="container py-16 md:py-20">
+        <div class="container pt-16 md:pt-20 pb-3">
             <h2 class="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
                 I also like to write
             </h2>
@@ -256,28 +258,25 @@ mobile_menu: >
             </h4>
             <div class="mt-16 grid place-items-center">
 
-                <!-- max-w-3xl lg:ml-auto xl:max-w-none xl:w-[50rem] -->
+                {% for post in site.posts limit: 3 %}
 
-                <article class="relative flex flex-col mx-2 max-w-5xl lg:ml-48 lg:mr-12">
-                    <h3 class="mb-4 text-xl text-slate-900 tracking-tight font-bold dark:text-slate-200"><a href="/blog/headless-ui-v1-5">Headless UI v1.5: The One With Comboboxes</a></h3>
+                <article class="relative flex flex-col mb-18 mx-2 max-w-5xl lg:ml-48 lg:mr-12 w-full">
+                    <h3 class="mb-4 text-xl text-slate-900 tracking-tight font-bold dark:text-slate-200"><a href="{{ post.url | replace: ".html", "" }}">{{ post.title }}</a></h3>
                     <div class="mb-6 dark:prose-dark">
-                       <p>We just released Headless UI v1.5, which includes a brand new <code>Combobox</code> component. Comboboxes are like select controls but with autocomplete/typeahead functionality, and are a great alternative to a regular select when you’re working with large datasets and want to quickly filter for the right option.</p>
+                       {{ post.excerpt }}
                     </div>
                     <div class="mt-auto flex flex-row-reverse items-center justify-end">
                        <dl>
                           <dt class="sr-only">Date</dt>
-                          <dd class="text-sm leading-6 dark:text-slate-400 lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:whitespace-nowrap"><time datetime="2022-02-24T12:00:00.000Z">Febuary 24, 2022</time></dd>
+                          <dd class="text-sm leading-6 dark:text-slate-400 lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:whitespace-nowrap"><time datetime="{{ post.date }}">{{ post.date | date_to_string }}</time></dd>
                        </dl>
                        <svg width="2" height="2" fill="currentColor" class="mx-4 text-primarydark lg:hidden">
                           <circle cx="1" cy="1" r="1"></circle>
                        </svg>
-
-                       <!-- #878787 fg bg rgb(223 223 223) -->
-
-                       <a class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-primarylight text-primarydark hover:bg-primarylighter" href="/blog/headless-ui-v1-5">
+                       <a class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-primarylight text-primarydark hover:bg-primarylighter" href="{{ post.url | replace: ".html", "" }}">
                           Read more
                           <span class="sr-only">
-                             , <!-- -->Headless UI v1.5: The One With Comboboxes
+                             , <!-- -->{{ post.title }}
                           </span>
                           <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400 dark:text-slate-500 dark:group-hover:text-slate-400" width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                              <path d="M0 0L3 3L0 6"></path>
@@ -286,61 +285,10 @@ mobile_menu: >
                     </div>
                  </article>
 
+                 {% endfor %}
 
-
-                <!-- <a href="/post" class="shadow">
-                    <div style="background-image: url(/assets/img/post-01.png)"
-                        class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72">
-                        <span
-                            class="absolute inset-0 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to bg-cover bg-center bg-no-repeat opacity-10 transition-opacity group-hover:opacity-50"></span>
-                        <span
-                            class="absolute right-0 bottom-0 mr-4 mb-4 block rounded-full border-2 border-white px-6 py-2 text-center font-body text-sm font-bold uppercase text-white md:text-base">Read
-                            More</span>
-                    </div>
-                    <div class="bg-white py-6 px-5 xl:py-8">
-                        <span class="block font-body text-lg font-semibold text-black">How to become a frontend
-                            developer</span>
-                        <span class="block pt-2 font-body text-grey-20">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing
-                            elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                    </div>
-                </a>
-                <a href="/post" class="shadow">
-                    <div style="background-image: url(/assets/img/post-02.png)"
-                        class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72">
-                        <span
-                            class="absolute inset-0 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to bg-cover bg-center bg-no-repeat opacity-10 transition-opacity group-hover:opacity-50"></span>
-                        <span
-                            class="absolute right-0 bottom-0 mr-4 mb-4 block rounded-full border-2 border-white px-6 py-2 text-center font-body text-sm font-bold uppercase text-white md:text-base">Read
-                            More</span>
-                    </div>
-                    <div class="bg-white py-6 px-5 xl:py-8">
-                        <span class="block font-body text-lg font-semibold text-black">My personal productivity
-                            system</span>
-                        <span class="block pt-2 font-body text-grey-20">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing
-                            elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                    </div>
-                </a>
-                <a href="/post" class="shadow">
-                    <div style="background-image: url(/assets/img/post-03.png)"
-                        class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72">
-                        <span
-                            class="absolute inset-0 block bg-gradient-to-b from-blog-gradient-from to-blog-gradient-to bg-cover bg-center bg-no-repeat opacity-10 transition-opacity group-hover:opacity-50"></span>
-                        <span
-                            class="absolute right-0 bottom-0 mr-4 mb-4 block rounded-full border-2 border-white px-6 py-2 text-center font-body text-sm font-bold uppercase text-white md:text-base">Read
-                            More</span>
-                    </div>
-                    <div class="bg-white py-6 px-5 xl:py-8">
-                        <span class="block font-body text-lg font-semibold text-black">My year in review 2020</span>
-                        <span class="block pt-2 font-body text-grey-20">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing
-                            elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                    </div>
-                </a> -->
             </div>
         </div>
     </div>
+
+    {% endif %}
