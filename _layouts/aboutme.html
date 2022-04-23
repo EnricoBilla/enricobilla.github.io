@@ -226,9 +226,8 @@ mobile_menu: >
                                 <i class="bx bxs-right-arrow hidden text-primary md:block"></i>
                                 <div class="md:-mt-1 md:pl-8">
                                     <span class="block font-body font-bold text-grey-40">{{ event.interval }}</span>
-                                    <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">{{
-                                        event.title}}AAA
-                                        Mobile</span>
+                                    <span class="block pt-2 font-header text-xl font-bold uppercase text-primary">
+                                        {{ event.title }}</span>
                                     <div class="pt-2">
                                         <span class="block font-body text-black">{{ event.description | newline_to_br
                                             }}</span>
@@ -255,8 +254,41 @@ mobile_menu: >
             <h4 class="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl">
                 Check out my latest posts!
             </h4>
-            <div class="mx-auto grid w-full grid-cols-1 gap-6 pt-12 sm:w-3/4 lg:w-full lg:grid-cols-3 xl:gap-10">
-                <a href="/post" class="shadow">
+            <div class="mt-16 grid place-items-center">
+
+                <!-- max-w-3xl lg:ml-auto xl:max-w-none xl:w-[50rem] -->
+
+                <article class="relative flex flex-col mx-2 max-w-5xl lg:ml-48 lg:mr-12">
+                    <h3 class="mb-4 text-xl text-slate-900 tracking-tight font-bold dark:text-slate-200"><a href="/blog/headless-ui-v1-5">Headless UI v1.5: The One With Comboboxes</a></h3>
+                    <div class="mb-6 dark:prose-dark">
+                       <p>We just released Headless UI v1.5, which includes a brand new <code>Combobox</code> component. Comboboxes are like select controls but with autocomplete/typeahead functionality, and are a great alternative to a regular select when you’re working with large datasets and want to quickly filter for the right option.</p>
+                    </div>
+                    <div class="mt-auto flex flex-row-reverse items-center justify-end">
+                       <dl>
+                          <dt class="sr-only">Date</dt>
+                          <dd class="text-sm leading-6 dark:text-slate-400 lg:absolute lg:top-0 lg:right-full lg:mr-8 lg:whitespace-nowrap"><time datetime="2022-02-24T12:00:00.000Z">Febuary 24, 2022</time></dd>
+                       </dl>
+                       <svg width="2" height="2" fill="currentColor" class="mx-4 text-primarydark lg:hidden">
+                          <circle cx="1" cy="1" r="1"></circle>
+                       </svg>
+
+                       <!-- #878787 fg bg rgb(223 223 223) -->
+
+                       <a class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-primarylight text-primarydark hover:bg-primarylighter" href="/blog/headless-ui-v1-5">
+                          Read more
+                          <span class="sr-only">
+                             , <!-- -->Headless UI v1.5: The One With Comboboxes
+                          </span>
+                          <svg class="overflow-visible ml-3 text-slate-300 group-hover:text-slate-400 dark:text-slate-500 dark:group-hover:text-slate-400" width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                             <path d="M0 0L3 3L0 6"></path>
+                          </svg>
+                       </a>
+                    </div>
+                 </article>
+
+
+
+                <!-- <a href="/post" class="shadow">
                     <div style="background-image: url(/assets/img/post-01.png)"
                         class="group relative h-72 bg-cover bg-center bg-no-repeat sm:h-84 lg:h-64 xl:h-72">
                         <span
@@ -308,7 +340,7 @@ mobile_menu: >
                             elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
